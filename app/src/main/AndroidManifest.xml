@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinApplicationYoutube">
         <activity
-            android:name=".ui.playList.PlayListActivity"
+            android:name=".ui.playList.PlaylistActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
