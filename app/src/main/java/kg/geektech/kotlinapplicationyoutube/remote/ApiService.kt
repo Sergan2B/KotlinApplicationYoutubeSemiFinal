@@ -13,7 +13,7 @@ interface ApiService {
         @Query("part") part: String,
         @Query("channelId") channelId: String,
         @Query("key") apiKey: String,
-        @Query("maxResult") maxResult: Int,
+        @Query("maxResults") maxResult: Int,
         @Query("pageToken") pageToken: String?
     ): Call<PlaylistModel>
 

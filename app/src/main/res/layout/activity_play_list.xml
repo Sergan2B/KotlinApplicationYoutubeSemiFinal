@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.playList.PlaylistActivity">
+    tools:context=".ui.playlist.PlaylistActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_play_list"
@@ -12,10 +12,16 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/item_play_list" />
 
+    <Button
+        android:id="@+id/button_go_third"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/zero_dp"
         android:layout_height="wrap_content"
         android:indeterminate="true"
         app:layout_constraintBottom_toBottomOf="parent"

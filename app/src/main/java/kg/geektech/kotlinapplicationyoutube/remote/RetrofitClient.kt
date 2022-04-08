@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitClient {
     companion object {
-        fun create() : ApiService {
+        fun create(): ApiService {
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 

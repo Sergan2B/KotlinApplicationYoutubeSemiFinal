@@ -1,6 +1,5 @@
-package kg.geektech.kotlinapplicationyoutube.ui.playList
+package kg.geektech.kotlinapplicationyoutube.ui.playlist
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import kg.geektech.kotlinapplicationyoutube.Base.BaseViewModel
 import kg.geektech.kotlinapplicationyoutube.BuildConfig.API_KEY
@@ -15,6 +14,9 @@ import retrofit2.Response
 class PlaylistViewModel : BaseViewModel() {
     private val _playlist = MutableLiveData<PlaylistModel?>()
     val playlist = _playlist
+
+    /*private var _id = "" починка
+    val id = MutableLiveData<String>()*/
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading = _isLoading
     private val _isAllPlaylistLoaded = MutableLiveData<Boolean>()
@@ -29,7 +31,7 @@ class PlaylistViewModel : BaseViewModel() {
         getPlaylists()
     }
 
-    private fun getPlaylists() {
+    fun getPlaylists() {
         apiService.getPlaylists(
             Constant.part,
             Constant.channelId,
@@ -55,12 +57,7 @@ class PlaylistViewModel : BaseViewModel() {
 
             override fun onFailure(call: Call<PlaylistModel>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(TAG, "Failure: ", t)
             }
         })
-    }
-
-    companion object {
-        private val TAG = PlaylistViewModel::class.java.simpleName
     }
 }

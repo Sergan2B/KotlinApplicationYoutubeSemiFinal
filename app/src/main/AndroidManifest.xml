@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kg.geektech.kotlinapplicationyoutube">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinApplicationYoutube">
         <activity
-            android:name=".ui.playList.PlaylistActivity"
+            android:name=".ui.Third"
+            android:exported="false" />
+        <activity
+            android:name=".ui.playlist.PlaylistActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,4 +25,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
