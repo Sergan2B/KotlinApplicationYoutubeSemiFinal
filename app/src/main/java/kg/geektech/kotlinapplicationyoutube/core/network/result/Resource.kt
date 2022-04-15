@@ -1,10 +1,7 @@
-package kg.geektech.kotlinapplicationyoutube.common
+package kg.geektech.kotlinapplicationyoutube.core.network.result
 
 
 class Resource<T>(val data: T, val msg: String?, val status: Status) {
-    enum class Status {
-        SUCCESS, ERROR, LOADING
-    }
 
     companion object {
         fun <T> success(data: T): Resource<T> {

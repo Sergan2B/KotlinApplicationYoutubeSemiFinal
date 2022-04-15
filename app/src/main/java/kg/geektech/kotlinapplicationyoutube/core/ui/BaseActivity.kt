@@ -1,4 +1,4 @@
-package kg.geektech.kotlinapplicationyoutube.Base
+package kg.geektech.kotlinapplicationyoutube.core.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,12 +16,10 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         super.onCreate(savedInstanceState)
         binding = inflateViewBinding(layoutInflater)
         setContentView(binding.root)
-
-        checkInternet()
         initViewModel()
         initView()
+        checkInternet()
         initListener()
-
     }
 
     open fun initView() {}

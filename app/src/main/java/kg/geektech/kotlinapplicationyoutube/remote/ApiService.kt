@@ -1,26 +1,25 @@
 package kg.geektech.kotlinapplicationyoutube.remote
 
-import kg.geektech.kotlinapplicationyoutube.model.PlayList
-import kg.geektech.kotlinapplicationyoutube.model.PlaylistModel
-import retrofit2.Call
+import kg.geektech.kotlinapplicationyoutube.remote.model.PlaylistModel
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
 
     @GET("playlists")
-    fun getPlaylists(
+    suspend fun getPlaylists(
         @Query("part") part: String,
         @Query("channelId") channelId: String,
         @Query("key") apiKey: String,
         @Query("maxResults") maxResult: Int,
-        @Query("pageToken") pageToken: String?
-    ): Call<PlaylistModel>
+    ): Response<PlaylistModel>
 
-    @GET("search")
-    fun getVideo(
+    @GET("playlistItems")
+    suspend fun getDetailPLayList(
         @Query("part") part: String,
-        @Query("channelId") channelId: String,
-        @Query("order") order: String,
-    ): Call<PlayList>
+        @Query("playlistId") playlistId: String,
+        @Query("key") key: String,
+        @Query("maxResults") maxResults: Int
+    ): Response<PlaylistModel>
 }

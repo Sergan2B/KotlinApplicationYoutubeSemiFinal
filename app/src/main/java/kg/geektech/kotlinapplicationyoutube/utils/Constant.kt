@@ -1,4 +1,4 @@
-package kg.geektech.kotlinapplicationyoutube.`object`
+package kg.geektech.kotlinapplicationyoutube.utils
 
 object Constant {
     const val channelId = "UCWOA1ZGywLbqmigxE4Qlvuw"
