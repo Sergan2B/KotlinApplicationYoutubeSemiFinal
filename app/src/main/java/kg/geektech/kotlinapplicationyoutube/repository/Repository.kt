@@ -21,7 +21,7 @@ class Repository(private val apiService: ApiService) {
     fun createDetailCall(id: String): LiveData<Resource<PlaylistModel?>> =
         liveData(Dispatchers.IO) {
             val response =
-                apiService.getDetailPLayList(Constant.part, id, API_KEY, Constant.maxResult)
+                apiService.getDetailPLayList(Constant.part, id, API_KEY)
             if (response.isSuccessful && response.body() != null) emit(Resource.success(response.body()))
             else emit(Resource.error(response.message(), response.body()))
         }

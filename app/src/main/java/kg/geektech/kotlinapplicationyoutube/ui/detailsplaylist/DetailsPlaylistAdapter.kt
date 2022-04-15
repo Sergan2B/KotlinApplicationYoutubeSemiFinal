@@ -17,8 +17,9 @@ import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
 
-class DetailsPlaylistAdapter(private val playList: PlaylistModel) :
-    RecyclerView.Adapter<DetailsPlaylistAdapter.ViewHolder>() {
+class DetailsPlaylistAdapter(
+    private val playList: PlaylistModel, private val initClick: (id: PlayListItem) -> Unit)
+    : RecyclerView.Adapter<DetailsPlaylistAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -42,6 +43,9 @@ class DetailsPlaylistAdapter(private val playList: PlaylistModel) :
             val localOffsetDateTime = offsetDateTime.withOffsetSameInstant(ZoneOffset.ofHours(-2))
             tvDuration.text =
                 String.format(localOffsetDateTime.format(DateTimeFormatter.ofPattern("dd-MM-uuuu ")))
+            itemView.setOnClickListener {
+                initClick(playList)
+            }
         }
     }
 }

@@ -31,6 +31,7 @@ data class Snippet(
     val publishedAt: String,
     val thumbnails: ThumbnailsY,
     val country: String,
+    val playlistId: String
 )
 data class Default(
     var url: String,
@@ -44,10 +45,5 @@ data class ThumbnailsY(
 
 data class High(
     val url: String
-)
-
-data class PageInfo(
-    val resultsPerPage: Int,
-    val totalResults: Int
 )
 

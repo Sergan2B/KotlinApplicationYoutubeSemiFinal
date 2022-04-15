@@ -20,6 +20,5 @@ interface ApiService {
         @Query("part") part: String,
         @Query("playlistId") playlistId: String,
         @Query("key") key: String,
-        @Query("maxResults") maxResults: Int
     ): Response<PlaylistModel>
 }

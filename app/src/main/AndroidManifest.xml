@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinApplicationYoutube">
         <activity
+            android:name=".ui.video.VideoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.detailsplaylist.DetailsPlaylist"
             android:exported="false" />
         <activity
