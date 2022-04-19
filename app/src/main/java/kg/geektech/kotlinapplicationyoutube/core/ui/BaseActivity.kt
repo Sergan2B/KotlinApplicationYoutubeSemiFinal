@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.google.android.youtube.player.YouTubeBaseActivity
 
-abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatActivity() {
+abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> :
+    AppCompatActivity() {
 
     protected lateinit var binding: VB
     protected abstract val viewModel: VM

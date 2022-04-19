@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:overScrollMode="never">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -15,6 +14,43 @@
         android:outlineAmbientShadowColor="@color/no_white"
         android:outlineSpotShadowColor="@color/no_white"
         tools:targetApi="p">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/playlist"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_arrow"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/back"
+                    android:textColor="@color/red"
+                    android:textSize="17sp" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
@@ -55,7 +91,6 @@
                     android:layout_marginStart="@dimen/normal_size_16dp"
                     android:layout_marginTop="@dimen/small_8dp"
                     android:layout_marginEnd="@dimen/normal_size_16dp"
-                    android:layout_marginBottom="@dimen/big_size_24dp"
                     android:scrollbars="vertical"
                     android:text="@string/title_water_second"
                     android:textAlignment="textStart"
@@ -75,8 +110,8 @@
         android:id="@+id/nested_scroll_video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:overScrollMode="never">
+        android:overScrollMode="never"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -134,18 +169,9 @@
             android:layout_centerVertical="true" />
 
         <include
+            android:id="@+id/connection"
             layout="@layout/blank_screen"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </RelativeLayout>
-
-    <ProgressBar
-        android:id="@+id/pb_detail_playlist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:visibility="gone" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

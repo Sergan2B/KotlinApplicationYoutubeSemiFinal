@@ -1,6 +1,6 @@
-package kg.geektech.kotlinapplicationyoutube.remote
+package kg.geektech.kotlinapplicationyoutube.data.remote
 
-import kg.geektech.kotlinapplicationyoutube.remote.model.PlaylistModel
+import kg.geektech.kotlinapplicationyoutube.data.remote.model.PlaylistModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -19,6 +19,13 @@ interface ApiService {
     suspend fun getDetailPLayList(
         @Query("part") part: String,
         @Query("playlistId") playlistId: String,
+        @Query("key") key: String,
+    ): Response<PlaylistModel>
+
+    @GET("videos")
+    suspend fun getPlaylistVideo(
+        @Query("part") part: String,
+        @Query("id") id: String,
         @Query("key") key: String,
     ): Response<PlaylistModel>
 }

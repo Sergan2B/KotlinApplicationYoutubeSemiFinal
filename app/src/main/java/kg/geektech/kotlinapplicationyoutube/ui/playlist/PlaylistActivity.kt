@@ -6,35 +6,29 @@ import android.os.Build
 import android.view.LayoutInflater
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import kg.geektech.kotlinapplicationhomework3.extentions.showToast
+import com.google.android.youtube.player.YouTubeBaseActivity
+import com.google.android.youtube.player.YouTubePlayer
+import kg.geektech.kotlinapplicationyoutube.core.extentions.showToast
 import kg.geektech.kotlinapplicationyoutube.core.network.result.Status
 import kg.geektech.kotlinapplicationyoutube.core.ui.BaseActivity
+import kg.geektech.kotlinapplicationyoutube.data.remote.model.PlayListItem
+import kg.geektech.kotlinapplicationyoutube.data.remote.model.PlaylistModel
 import kg.geektech.kotlinapplicationyoutube.databinding.ActivityPlaylistBinding
-import kg.geektech.kotlinapplicationyoutube.remote.model.PlayListItem
-import kg.geektech.kotlinapplicationyoutube.remote.model.PlaylistModel
 import kg.geektech.kotlinapplicationyoutube.ui.detailsplaylist.DetailsPlaylist
 import kg.geektech.kotlinapplicationyoutube.utils.NetworkStatus.Available
 import kg.geektech.kotlinapplicationyoutube.utils.NetworkStatusHelper
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding>() {
-
+    override val viewModel: PlaylistViewModel by viewModel()
     private lateinit var playList: PlaylistModel
     private val adapter by lazy { PlaylistAdapter(playList, this::initClick) }
-    override val viewModel: PlaylistViewModel by viewModel()
-
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun setupRecycler() {
-        binding.recyclerPlayList.apply {
-            layoutManager = LinearLayoutManager(this@PlaylistActivity)
-            adapter = this@PlaylistActivity.adapter
-        }
-        adapter.notifyDataSetChanged()
-    }
+    private val networkStatusHelper: NetworkStatusHelper by inject()
 
     override fun initViewModel() {
         super.initViewModel()
+        viewModel.setBoard(true)
         viewModel.loading.observe(this) {
             binding.progress.isVisible = it
             binding.progressBar.isVisible = it
@@ -65,10 +59,13 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
     }
 
     private fun checkInternetMethod() {
-        NetworkStatusHelper(this@PlaylistActivity).observe(this) {
-            if (it == Available) {
+        var status: Boolean
+        networkStatusHelper.observe(this) {
+            status = false
+            if (it == Available && !status) {
                 binding.connection.parentConnection.isVisible = false
             } else {
+                status = true
                 binding.connection.parentConnection.isVisible = true
                 binding.connection.button.setOnClickListener {
                     if (Available == Available) {
@@ -77,10 +74,6 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
                 }
             }
         }
-    }
-
-    override fun inflateViewBinding(inflater: LayoutInflater): ActivityPlaylistBinding {
-        return ActivityPlaylistBinding.inflate(inflater)
     }
 
     private fun initClick(id: PlayListItem) {
@@ -92,7 +85,21 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    private fun setupRecycler() {
+        binding.recyclerPlayList.apply {
+            layoutManager = LinearLayoutManager(this@PlaylistActivity)
+            adapter = this@PlaylistActivity.adapter
+        }
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun inflateViewBinding(inflater: LayoutInflater): ActivityPlaylistBinding {
+        return ActivityPlaylistBinding.inflate(inflater)
+    }
+
     companion object {
         const val PLAYLIST = "playlist"
+        const val PLAYLIST_VIDEO = "playlistVideo"
     }
 }

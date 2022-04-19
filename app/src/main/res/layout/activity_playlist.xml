@@ -36,7 +36,6 @@
     <include
         android:id="@+id/connection"
         layout="@layout/blank_screen"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

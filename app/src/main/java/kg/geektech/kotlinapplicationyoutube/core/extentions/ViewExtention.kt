@@ -1,4 +1,4 @@
-package kg.geektech.kotlinapplicationhomework3.extentions
+package kg.geektech.kotlinapplicationyoutube.core.extentions
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

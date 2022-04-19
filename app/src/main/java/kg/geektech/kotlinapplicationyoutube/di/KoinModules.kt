@@ -1,7 +1,7 @@
 package kg.geektech.kotlinapplicationyoutube.di
 
-import networkModule
+import kg.geektech.kotlinapplicationyoutube.core.network.networkModule
 
 val koinModules = listOf(
-    repoModules, viewModels, networkModule
+    repoModules, viewModels, networkModule, connectionModule, prefsModule
 )

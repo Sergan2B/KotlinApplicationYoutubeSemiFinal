@@ -1,4 +1,4 @@
-package kg.geektech.kotlinapplicationyoutube.remote.model
+package kg.geektech.kotlinapplicationyoutube.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -21,7 +21,16 @@ data class PlayListItem(
 )
 
 data class ContentDetail(
-    val itemCount: Int
+    val itemCount: Int,
+    val videoId: String,
+    val videoPublishedAt: String, //"2022-04-11T17:41:32Z"
+    val caption: String,
+    val definition: String,
+    val dimension: String,
+    val duration: String,
+    val licensedContent: Boolean,
+    val projection: String
+
 )
 
 data class Snippet(
@@ -31,8 +40,16 @@ data class Snippet(
     val publishedAt: String,
     val thumbnails: ThumbnailsY,
     val country: String,
-    val playlistId: String
+    val playlistId: String,
+
+    val categoryId: String,
+    val channelId: String,
+    val channelTitle: String,
+    val defaultAudioLanguage: String,
+    val liveBroadcastContent: String,
+    val tags: List<String>,
 )
+
 data class Default(
     var url: String,
     var width: Int,
@@ -41,7 +58,8 @@ data class Default(
 
 data class ThumbnailsY(
     var default: Default,
-    var high: High)
+    var high: High
+)
 
 data class High(
     val url: String

@@ -6,20 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import kg.geektech.kotlinapplicationhomework3.extentions.load
 import kg.geektech.kotlinapplicationyoutube.R
+import kg.geektech.kotlinapplicationyoutube.core.extentions.load
+import kg.geektech.kotlinapplicationyoutube.data.remote.model.ContentDetail
+import kg.geektech.kotlinapplicationyoutube.data.remote.model.PlayListItem
+import kg.geektech.kotlinapplicationyoutube.data.remote.model.PlaylistModel
 import kg.geektech.kotlinapplicationyoutube.databinding.ItemDetailPlaylistBinding
-import kg.geektech.kotlinapplicationyoutube.remote.model.PlayListItem
-import kg.geektech.kotlinapplicationyoutube.remote.model.PlaylistModel
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
+import kotlin.reflect.KFunction1
 
 @RequiresApi(Build.VERSION_CODES.O)
-
 class DetailsPlaylistAdapter(
-    private val playList: PlaylistModel, private val initClick: (id: PlayListItem) -> Unit)
-    : RecyclerView.Adapter<DetailsPlaylistAdapter.ViewHolder>() {
+    private val playList: PlaylistModel, private val initClick: KFunction1<ContentDetail, Unit>
+) : RecyclerView.Adapter<DetailsPlaylistAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -44,7 +45,7 @@ class DetailsPlaylistAdapter(
             tvDuration.text =
                 String.format(localOffsetDateTime.format(DateTimeFormatter.ofPattern("dd-MM-uuuu ")))
             itemView.setOnClickListener {
-                initClick(playList)
+                initClick(playList.contentDetail)
             }
         }
     }
