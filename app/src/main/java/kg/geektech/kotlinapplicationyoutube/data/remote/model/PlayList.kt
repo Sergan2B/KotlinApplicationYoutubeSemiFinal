@@ -23,7 +23,7 @@ data class PlayListItem(
 data class ContentDetail(
     val itemCount: Int,
     val videoId: String,
-    val videoPublishedAt: String, //"2022-04-11T17:41:32Z"
+    val videoPublishedAt: String,
     val caption: String,
     val definition: String,
     val dimension: String,

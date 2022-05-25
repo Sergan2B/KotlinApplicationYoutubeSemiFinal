@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import com.google.android.youtube.player.YouTubeBaseActivity
 
 abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> :
     AppCompatActivity() {
@@ -28,5 +27,4 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> :
     open fun initListener() {}
     open fun checkInternet() {}
     open fun initViewModel() {}
-
 }

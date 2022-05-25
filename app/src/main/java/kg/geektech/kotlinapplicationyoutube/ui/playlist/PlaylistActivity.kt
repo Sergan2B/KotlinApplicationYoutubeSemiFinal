@@ -6,8 +6,6 @@ import android.os.Build
 import android.view.LayoutInflater
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.youtube.player.YouTubeBaseActivity
-import com.google.android.youtube.player.YouTubePlayer
 import kg.geektech.kotlinapplicationyoutube.core.extentions.showToast
 import kg.geektech.kotlinapplicationyoutube.core.network.result.Status
 import kg.geektech.kotlinapplicationyoutube.core.ui.BaseActivity
@@ -28,7 +26,6 @@ class PlaylistActivity : BaseActivity<PlaylistViewModel, ActivityPlaylistBinding
 
     override fun initViewModel() {
         super.initViewModel()
-        viewModel.setBoard(true)
         viewModel.loading.observe(this) {
             binding.progress.isVisible = it
             binding.progressBar.isVisible = it

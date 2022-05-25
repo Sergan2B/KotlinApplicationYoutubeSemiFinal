@@ -7,11 +7,8 @@ import android.view.LayoutInflater
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.youtube.player.YouTubeBaseActivity
-import com.google.android.youtube.player.YouTubePlayer
-import kg.geektech.kotlinapplicationyoutube.core.extentions.checkLog
-import kg.geektech.kotlinapplicationyoutube.core.extentions.showToast
 import kg.geektech.kotlinapplicationyoutube.R
+import kg.geektech.kotlinapplicationyoutube.core.extentions.showToast
 import kg.geektech.kotlinapplicationyoutube.core.network.result.Status
 import kg.geektech.kotlinapplicationyoutube.core.ui.BaseActivity
 import kg.geektech.kotlinapplicationyoutube.data.remote.model.ContentDetail
@@ -36,7 +33,6 @@ class DetailsPlaylist : BaseActivity<DetailsPlaylistViewModel, ActivityDetailsPl
 
     override fun initViewModel() {
         super.initViewModel()
-        viewModel.getBoard().observe(this) { checkLog("lol", it.toString()) }
         viewModel.getDetailPlayList(intent.getStringExtra(PLAYLIST).toString())
             .observe(this) { it ->
                 viewModel.loading.observe(this) { binding.progress.isVisible = it }

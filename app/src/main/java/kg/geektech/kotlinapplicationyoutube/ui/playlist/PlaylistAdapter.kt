@@ -11,7 +11,8 @@ import kg.geektech.kotlinapplicationyoutube.data.remote.model.PlaylistModel
 import kg.geektech.kotlinapplicationyoutube.databinding.ItemPlayListBinding
 
 class PlaylistAdapter(
-    private val playList: PlaylistModel, private val initClick: (id: PlayListItem) -> Unit
+    private val playList: PlaylistModel,
+    private val initClick: (id: PlayListItem) -> Unit
 ) : RecyclerView.Adapter<PlaylistAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

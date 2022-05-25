@@ -8,7 +8,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val viewModels: Module = module {
-    viewModel { PlaylistViewModel(get(), get()) }
-    viewModel { DetailsPlaylistViewModel(get(), get()) }
+    viewModel { PlaylistViewModel(get()) }
+    viewModel { DetailsPlaylistViewModel(get()) }
     viewModel { VideoViewModel(get()) }
 }
